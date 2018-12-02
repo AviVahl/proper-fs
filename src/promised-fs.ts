@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { promisify } from 'util'
+import { dirname } from 'path'
 
 export const access = promisify(fs.access)
 export const appendFile = promisify(fs.appendFile)
@@ -59,5 +60,26 @@ export async function directoryExists(path: string, statFn = stat): Promise<bool
         return (await statFn(path)).isDirectory()
     } catch {
         return false
+    }
+}
+
+/**
+ * Ensure a directory and its parent directory chain exists.
+ *
+ * @param directoryPath directory to ensure
+ */
+export async function ensureDirectory(directoryPath: string): Promise<void> {
+    if (await directoryExists(directoryPath)) {
+        return
+    }
+    try {
+        await mkdir(directoryPath)
+    } catch (e) {
+        const parentPath = dirname(directoryPath)
+        if (parentPath === directoryPath) {
+            throw e
+        }
+        await ensureDirectory(parentPath)
+        await mkdir(directoryPath)
     }
 }

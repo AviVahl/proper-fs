@@ -14,6 +14,7 @@ Same as Node.js's native `fs` module, but with the following changes:
 - Additional helper methods:
   - `fileExists` and `fileExistsSync`
   - `directoryExists` and `directoryExistsSync`
+  - `ensureDirectory` and `ensureDirectorySync`
 
 ## Why?
 

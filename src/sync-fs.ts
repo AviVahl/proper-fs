@@ -1,4 +1,5 @@
-import { statSync } from 'fs'
+import { statSync, mkdirSync } from 'fs'
+import { dirname } from 'path'
 
 export {
     accessSync,
@@ -60,5 +61,26 @@ export function directoryExistsSync(path: string, statFn = statSync): boolean {
         return statFn(path).isDirectory()
     } catch {
         return false
+    }
+}
+
+/**
+ * Ensure a directory and its parent directory chain exists.
+ *
+ * @param directoryPath directory to ensure
+ */
+export function ensureDirectorySync(directoryPath: string): void {
+    if (directoryExistsSync(directoryPath)) {
+        return
+    }
+    try {
+        mkdirSync(directoryPath)
+    } catch (e) {
+        const parentPath = dirname(directoryPath)
+        if (parentPath === directoryPath) {
+            throw e
+        }
+        ensureDirectorySync(parentPath)
+        mkdirSync(directoryPath)
     }
 }
