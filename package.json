@@ -8,7 +8,8 @@
     "clean": "rimraf cjs",
     "prebuild": "yarn clean",
     "build": "tsc -p src",
-    "lint": "tslint --project src"
+    "lint": "tslint --project src",
+    "prepack": "yarn build"
   },
   "files": [
     "cjs",
@@ -19,8 +20,8 @@
   },
   "devDependencies": {
     "@types/node": "8",
-    "rimraf": "^2.6.2",
-    "tslint": "^5.11.0",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.12.1",
     "typescript": "~3.2.2"
   },
   "repository": "git@github.com:AviVahl/proper-fs.git",
