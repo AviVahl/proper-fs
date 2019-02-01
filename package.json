@@ -22,7 +22,7 @@
     "@types/node": "8",
     "rimraf": "^2.6.3",
     "tslint": "^5.12.1",
-    "typescript": "~3.2.4"
+    "typescript": "~3.3.1"
   },
   "repository": "git@github.com:AviVahl/proper-fs.git",
   "author": {
