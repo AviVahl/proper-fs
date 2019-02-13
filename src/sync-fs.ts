@@ -8,6 +8,7 @@ export {
     chownSync,
     closeSync,
     copyFileSync,
+    existsSync,
     fchmodSync,
     fchownSync,
     fdatasyncSync,
