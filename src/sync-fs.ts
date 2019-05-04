@@ -1,5 +1,5 @@
-import { statSync, mkdirSync } from 'fs'
-import { dirname } from 'path'
+import { statSync, mkdirSync } from 'fs';
+import { dirname } from 'path';
 
 export {
     accessSync,
@@ -35,7 +35,7 @@ export {
     utimesSync,
     writeSync,
     writeFileSync,
-} from 'fs'
+} from 'fs';
 
 /**
  * Check if a path points to an existing file.
@@ -45,9 +45,9 @@ export {
  */
 export function fileExistsSync(path: string, statFn = statSync): boolean {
     try {
-        return statFn(path).isFile()
+        return statFn(path).isFile();
     } catch {
-        return false
+        return false;
     }
 }
 
@@ -59,9 +59,9 @@ export function fileExistsSync(path: string, statFn = statSync): boolean {
  */
 export function directoryExistsSync(path: string, statFn = statSync): boolean {
     try {
-        return statFn(path).isDirectory()
+        return statFn(path).isDirectory();
     } catch {
-        return false
+        return false;
     }
 }
 
@@ -72,16 +72,16 @@ export function directoryExistsSync(path: string, statFn = statSync): boolean {
  */
 export function ensureDirectorySync(directoryPath: string): void {
     if (directoryExistsSync(directoryPath)) {
-        return
+        return;
     }
     try {
-        mkdirSync(directoryPath)
+        mkdirSync(directoryPath);
     } catch (e) {
-        const parentPath = dirname(directoryPath)
+        const parentPath = dirname(directoryPath);
         if (parentPath === directoryPath) {
-            throw e
+            throw e;
         }
-        ensureDirectorySync(parentPath)
-        mkdirSync(directoryPath)
+        ensureDirectorySync(parentPath);
+        mkdirSync(directoryPath);
     }
 }

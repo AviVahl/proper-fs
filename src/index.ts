@@ -1,8 +1,8 @@
 // Async, Promise-returning, fs methods
-export * from './promised-fs'
+export * from './promised-fs';
 
 // Sync fs methods
-export * from './sync-fs'
+export * from './sync-fs';
 
 export {
     constants,
@@ -19,6 +19,6 @@ export {
     createWriteStream,
     ReadStream,
     WriteStream
-} from 'fs'
+} from 'fs';
 
-export { isCaseSensitive } from './is-case-sensitive'
+export { isCaseSensitive } from './is-case-sensitive';
