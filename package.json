@@ -7,23 +7,20 @@
   "scripts": {
     "clean": "rimraf cjs",
     "prebuild": "yarn clean",
-    "build": "tsc -p src",
-    "lint": "tslint --project src",
+    "build": "tsc",
     "prepack": "yarn build"
   },
   "files": [
     "cjs",
-    "src",
-    "!src/tsconfig.json"
+    "src"
   ],
   "engines": {
     "node": ">=8"
   },
   "devDependencies": {
     "@types/node": "8",
-    "rimraf": "^2.6.3",
-    "tslint": "^5.18.0",
-    "typescript": "~3.5.3"
+    "rimraf": "^3.0.0",
+    "typescript": "~3.6.4"
   },
   "repository": "git@github.com:AviVahl/proper-fs.git",
   "author": {
